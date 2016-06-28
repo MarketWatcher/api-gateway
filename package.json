@@ -1,0 +1,38 @@
+{
+  "name": "marketwatcher-api-gateway",
+  "version": "1.0.0",
+  "description": "Reverse proxy for marketwatcher backend",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "mocha specs/*/**.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ThoughtWorksTurkey/marketwatcher-api-gateway.git"
+  },
+  "keywords": [
+    "reverse-proxy",
+    "marketwatcher"
+  ],
+  "author": "",
+  "license": "Apache-2.0",
+  "bugs": {
+    "url": "https://github.com/ThoughtWorksTurkey/marketwatcher-api-gateway/issues"
+  },
+  "homepage": "https://github.com/ThoughtWorksTurkey/marketwatcher-api-gateway#readme",
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "bunyan": "^1.8.1",
+    "express": "^4.14.0",
+    "express-bunyan-logger": "^1.3.0",
+    "express-session": "^1.13.0",
+    "request": "^2.72.0",
+    "serve-static": "^1.11.1"
+  },
+  "devDependencies": {
+    "eslint": "^2.13.1",
+    "expect.js": "^0.3.1",
+    "sinon": "^1.17.4",
+    "supertest": "^1.2.0"
+  }
+}

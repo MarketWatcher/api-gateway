@@ -1,0 +1,7 @@
+{
+    "staticDir": "dist",
+    "redirection": {
+        "/api/alerts": "http://localhost:9000",
+        "/api/trends": "http://localhost:9000"
+    }
+}
