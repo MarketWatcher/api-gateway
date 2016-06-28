@@ -1,15 +1,10 @@
 const express = require("express")
-const log = require("bunyan").createLogger({name: "marketwatcher-api-gateway"})
-const configuration = require("../conf/app.json")
-const request = require("request")
 const bodyParser = require("body-parser")
+const log = require("bunyan").createLogger({name: "marketwatcher-api-gateway"})
 const expressBunyanLogger = require("express-bunyan-logger")
 
-const Resolver = require("./resolver")
-const ApiProxy = require("./api-proxy")
-
-let resolver = new Resolver(configuration.redirection)
-
+const configuration = require("../conf/app.json")
+const apiRoutes = require("./api-routes")
 const app = express()
 
 app.use(expressBunyanLogger())
@@ -18,11 +13,10 @@ app.use("/", express.static(configuration.staticDir))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-app.post("/api/login", (req, res) => {
+//if(!process.env.SECRET) throw new Error("$SECRET is not defined")
+app.set("secret", process.env.SECRET || "keyboard cat")
 
-})
-
-app.all("/api*", new ApiProxy(resolver, request).redirect)
+app.use("/api", apiRoutes(app.get("secret"), configuration.redirection))
 
 app.all("*", (req, res) => {
     res.redirect("/")

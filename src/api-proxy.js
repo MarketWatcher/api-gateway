@@ -12,21 +12,18 @@ class ApiProxy {
 
     redirect(req, res) {
         let destination = this.resolver.resolve(req.originalUrl)
-        if(!destination) {
-            res.sendStatus(404)
-            return
-        }
+        if(!destination) return res.sendStatus(404)
 
         try {
             this.client({method: req.method, url: destination, json: req.body})
             .on("error", (error) => {
                 req.log.error(error)
-                res.status(500).json({message: "Unexpected Error", id: req.id})
+                return res.status(500).json({message: "Unexpected Error", id: req.id})
             })
             .pipe(res)
         } catch (e) {
             req.log.error(e)
-            res.status(500).json({message: "Unexpected Error", id: req.id})
+            return res.status(500).json({message: "Unexpected Error", id: req.id})
         }
     }
 }

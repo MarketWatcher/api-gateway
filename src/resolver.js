@@ -8,6 +8,7 @@ class Resolver {
         let trimSlashes = (str) => {
             return str.replace(/^\//, "").replace(/\/$/, "")
         }
+        
         return `${trimSlashes(host)}/${trimSlashes(path)}`
     }
 
