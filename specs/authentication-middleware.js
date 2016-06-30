@@ -7,7 +7,7 @@ const bodyParser = require("body-parser")
 describe("Authentication middleware", () => {
     it("should pass request through with a valid token", (done) => {
         let secret = "secret"
-        let token = jwt.sign({}, secret, {})
+        let token = jwt.sign({ip: "::ffff:127.0.0.1", userAgent: "node-superagent/1.8.3"}, secret, {})
         let server = express()
 
         server.use(bodyParser.json())
