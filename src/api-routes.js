@@ -19,7 +19,7 @@ module.exports = (secret, redirection) => {
         if(match.length < 1) return res.sendStatus(401)
 
         let {id, email} = match[0]
-        let token = jwt.sign({id, email}, secret, {
+        let token = jwt.sign({id, email, ip: req.ip, userAgent: req.headers["user-agent"]}, secret, {
             expiresIn: 86400
         })
 

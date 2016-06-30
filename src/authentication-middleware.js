@@ -5,7 +5,13 @@ module.exports = (verifier, secret) => {
         if(token) {
             verifier.verify(token, secret, (err, decoded) => {
                 if (err) return res.status(403).send("Token not verified")
+
+                if(req.ip != decoded.ip || req.headers["user-agent"] != decoded.userAgent) {
+                    return res.status(403).send("Token not verified")
+                }
+
                 req.decoded = decoded
+
                 next()
             })
         } else {
