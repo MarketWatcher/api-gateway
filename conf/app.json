@@ -1,4 +1,5 @@
 {
+    "port": 8000,
     "staticDir": "dist",
     "redirection": {
         "/api/alerts": "http://localhost:9000",

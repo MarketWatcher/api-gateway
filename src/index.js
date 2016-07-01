@@ -13,8 +13,8 @@ app.use("/", express.static(configuration.staticDir))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-//if(!process.env.SECRET) throw new Error("$SECRET is not defined")
-app.set("secret", process.env.SECRET || "keyboard cat")
+if(!process.env.SECRET) throw new Error("$SECRET is not defined")
+app.set("secret", process.env.SECRET)
 
 app.use("/api", apiRoutes(app.get("secret"), configuration.redirection))
 
@@ -22,6 +22,6 @@ app.all("*", (req, res) => {
     res.redirect("/")
 })
 
-app.listen(8000, () => {
-    log.info("Started listening on port " + 8000)
+app.listen(configuration.port , () => {
+    log.info("Started listening on port " + configuration.port)
 })
