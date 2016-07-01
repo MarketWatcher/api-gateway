@@ -4,6 +4,7 @@
   "description": "Reverse proxy for marketwatcher backend",
   "main": "src/index.js",
   "scripts": {
+    "start": "node src/index.js",
     "test": "mocha specs/**/*.js",
     "testWatch": "supervisor -q -n exit -x mocha \"specs/**/*.js\""
   },
