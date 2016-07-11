@@ -6,6 +6,7 @@ const expressBunyanLogger = require("express-bunyan-logger")
 const configuration = require("../conf/app.json")
 const apiRoutes = require("./api-routes")
 const app = express()
+const randomstring = require("randomstring")
 
 app.use(expressBunyanLogger())
 
@@ -13,8 +14,7 @@ app.use("/", express.static(configuration.staticDir))
 app.use(bodyParser.json())
 app.use(bodyParser.urlencoded({ extended: true }))
 
-if(!process.env.SECRET) throw new Error("$SECRET is not defined")
-app.set("secret", process.env.SECRET)
+app.set("secret", randomstring.generate())
 
 app.use("/api", apiRoutes(app.get("secret"), configuration.redirection))
 

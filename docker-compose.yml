@@ -1,0 +1,4 @@
+apigateway:
+  image: thoughtworksturkey/marketwatcher-api-gateway
+  ports:
+    - "8000:8000"

@@ -1,0 +1,3 @@
+[submodule "scripts/external"]
+	path = scripts/external
+	url = https://github.com/ThoughtWorksTurkey/marketwatcher-service-harness.git
