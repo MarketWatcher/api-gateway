@@ -6,6 +6,7 @@ COPY package.json /opt/api-gateway
 COPY users.js /opt/api-gateway
 COPY src /opt/api-gateway/src
 COPY conf /opt/api-gateway/conf
+COPY conf/app.json-PRODUCTION /opt/api-gateway/conf/app.json
 COPY node_modules /opt/api-gateway/node_modules
 
 WORKDIR /opt/api-gateway/
