@@ -2,6 +2,7 @@
     "port": 8000,
     "staticDir": "dist",
     "redirection": {
-        "/api/alerts": "http://localhost:10100"
+        "/api/alerts": "http://localhost:10100",
+        "/api/trends": "http://localhost:10900"
     }
 }
