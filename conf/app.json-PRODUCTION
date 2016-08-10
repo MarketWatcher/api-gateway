@@ -2,6 +2,7 @@
     "port": 8000,
     "staticDir": "dist",
     "redirection": {
-        "/api/alerts": "http://marketwatcher.tech:10100"
+        "/api/alerts": "http://marketwatcher.tech:10100",
+        "/api/trends": "http://marketwatcher.tech:10900"
     }
 }
